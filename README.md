@@ -11,6 +11,9 @@
 
 - JAVA SERVER FACES
 
+- IDE USADA
+
+- ECLIPSE LUNA
 
 
 P.S.: Todas API's usadas encontram-se com suas respectivas implementações na pasta /lib. 
