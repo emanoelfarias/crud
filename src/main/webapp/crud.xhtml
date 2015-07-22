@@ -1,0 +1,77 @@
+
+	
+	
+
+   <ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      template="/padrao.xhtml">
+		
+   <ui:define name="centro"  >
+   
+   <h:form id="frn">   
+
+			<p:messages errorStyle="color: red" infoStyle="color: green"
+			warnStyle="color: orange" fatalStyle="color: gray" />
+      
+ 
+       <p:dataTable value="#{alunoBean.lista}"  
+				var="lista"  border="1" cellspacing="0" cellpadding="2"
+				paginator="true" rows="10" paginatorPosition="bottom"  lazy="false" >
+		
+		<p:column headerText="Código">
+			<h:outputText value="#{lista.codAluno}" />
+		</p:column>
+		
+		<p:column headerText="Nome" sortBy="#{lista.nome}">
+			<h:outputText value="#{lista.nome}" />
+		</p:column>
+		
+	 	
+		
+		
+		<p:column headerText="Peso" sortBy="#{lista.peso}">
+			<h:outputText value="#{lista.peso}" />
+		</p:column>
+		
+		<p:column headerText="Altura" sortBy="#{lista.altura}">
+			<h:outputText value="#{lista.altura}" />
+		</p:column>
+
+		
+		
+		<p:column headerText="Modalidade">
+			<h:outputText value="#{lista.codModalidade.tipo}" />
+		</p:column>
+		
+		<p:column headerText="Curso">
+			<h:outputText value="#{lista.codCurso.nome}" />
+		</p:column>
+		
+		<p:column headerText="Ações">
+		<p:commandButton icon="ui-icon-trash" title="Excluir" process="@this" update="@form" 
+		action="#{alunoBean.excluir}">
+			<f:setPropertyActionListener value="#{lista}" target="#{alunoBean.alunoSelecionado}" />
+		</p:commandButton>
+		
+		
+		
+		<p:button icon="ui-icon-refresh" title="Editar" outcome="/cadastroAluno">
+		<f:param name="codAluno" value="#{lista.codAluno}" />
+		</p:button>				
+		
+		
+		
+		<p:button icon="ui-icon-plus" title="Cadastrar" outcome="/cadastroAluno" />
+		</p:column>
+		
+
+		</p:dataTable>
+		</h:form>
+		
+	</ui:define>
+    </ui:composition>
+  	
+  

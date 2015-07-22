@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+	
+	<ui:decorate template="/padrao.xhtml">
+    	<ui:define name="centro" >
+    		<div align="left">
+    		
+    		<f:metadata>
+			<f:viewParam name="codAluno" value="#{alunoBean.aluno}" />			
+			</f:metadata>
+			
+    		<p:outputLabel value="CADASTRO DE ALUNOS"/>
+    		
+    		<h:form >
+    	       
+    		
+    		<p:messages showDetail="false" autoUpdate="true" /> 
+    		
+    		<p:panelGrid columns="2">     		
+        	<p:outputLabel value="Nome:" id="Nome"/> <p:inputText value="#{alunoBean.aluno.nome}" label="Nome"
+        	required="true"/>
+        	<p:outputLabel value="Matricula:" id="Matricula" /> <p:inputText value="#{alunoBean.aluno.matricula}" label="Matricula" 
+        	required="true"/>
+        	<p:outputLabel value="Sexo:" />
+        		<p:selectOneRadio value="#{alunoBean.aluno.sexo}">
+            	<f:selectItem itemLabel="Masculino" itemValue="M" />
+            	<f:selectItem itemLabel="Feminino" itemValue="F" />            	
+        	</p:selectOneRadio>
+        	<p:outputLabel value="Peso:" id="Peso"/> <p:inputText value="#{alunoBean.aluno.peso}" label="Peso" required="true"/>
+        	<p:outputLabel value="Altura:" id="Altura"/> <p:inputText value="#{alunoBean.aluno.altura}" label="Altura" required="true"/>
+					
+					<p:outputLabel value="Modalidade:"/>
+					<h:selectOneListbox size="5" value="#{alunoBean.modalidade}">
+					<f:selectItems  var="modalidades" value="#{modalidadeBean.lista}" itemLabel="#{modalidades.tipo}" 
+					itemValue="#{modalidades}"/>
+					</h:selectOneListbox>
+			        	   	
+        			<p:outputLabel value="Equipe:"/>
+					<h:selectOneListbox size="5" value="#{alunoBean.equipe}">
+					<f:selectItems  var="equipes" value="#{equipeBean.lista}" itemLabel="#{equipes.nomeEquipe}"
+					itemValue="#{equipes}"/>
+					</h:selectOneListbox>
+					
+        			<p:outputLabel value="Curso:"/>
+					<h:selectOneListbox size="5" value="#{alunoBean.curso}">
+					<f:selectItems  var="cursos" value="#{cursoBean.lista}" itemLabel="#{cursos.nome}"
+					itemValue="#{cursos}"/>
+					</h:selectOneListbox>
+					
+        	<p:commandButton value="Salvar" action="#{alunoBean.guardar}" />
+        	</p:panelGrid>
+        	</h:form>
+        	
+        	</div>
+		</ui:define>
+    </ui:decorate>
+  	
+
+
+
+
+  </html>
